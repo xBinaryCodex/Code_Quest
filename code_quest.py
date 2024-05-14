@@ -1,21 +1,24 @@
 import pygame
 import sys
 
+
 # Initialize Pygame
 pygame.init()
 
 # Constants
-SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
+SCREEN_WIDTH, SCREEN_HEIGHT = 800, 800
 FPS = 30
 
 # Colors
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-GREY = (100, 100, 100)
+WHITE = (255, 0, 0)
+GREY = (50, 50, 50)
+
+# Load Background Image
+background_image = pygame.image.load('images/Code_Quest_Cover.png')  # path to image
 
 # Setup display
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Code Quest - Portfoliio Game")
+pygame.display.set_caption("Code Quest - Portfolio Game")
 
 # Setup clock
 clock = pygame.time.Clock()
@@ -31,7 +34,7 @@ def main_menu():
     selected_item = 1
 
     while True:
-        screen.fill(BLACK)
+        screen.blit(background_image, [0, 0])  # Draw the background image
 
         if selected_item == 1:
             draw_text('Start Game', menu_font, WHITE, screen, SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 20)
@@ -64,7 +67,7 @@ def game_loop():
             if event.type == pygame.QUIT:
                 running = False
 
-        screen.fill(BLACK)
+        screen.blit(background_image, [0, 0])  # Keep drawing the background in the game loop
         draw_text('Game Screen - Under Construction', pygame.font.Font(None, 36), WHITE, screen, SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
 
         pygame.display.update()
